@@ -240,7 +240,6 @@ namespace FastCodeSNILBot
 
             var cell = Model.command_cells_for_repaint.FirstOrDefault(c => c.collumn == e.ColumnIndex && c.row == e.RowIndex);
 
-
             switch (Model.current_operation_mode)
             {
                 case Model.OperationMode.TemplatesSelecting:
@@ -374,7 +373,7 @@ namespace FastCodeSNILBot
             e.Handled = true;
         }
 
-        private void DGV_commands_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void DGV_commands_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)  
         {
             var cell = Model.command_cells_for_repaint.FirstOrDefault(c => c.collumn == e.ColumnIndex && c.row == e.RowIndex);
 
@@ -516,6 +515,9 @@ namespace FastCodeSNILBot
         {
             Model.selected_command_cell.X = e.ColumnIndex;
             Model.selected_command_cell.Y = e.RowIndex;
+
+            Model.current_command_col = e.ColumnIndex;
+            Model.current_command_row = e.RowIndex;
         }
     }
 }

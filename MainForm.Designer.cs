@@ -29,8 +29,8 @@ namespace FastCodeSNILBot
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.DGV_commands = new System.Windows.Forms.DataGridView();
             this.BT_commands_count = new System.Windows.Forms.Button();
@@ -124,25 +124,25 @@ namespace FastCodeSNILBot
             this.DGV_functions.ColumnHeadersVisible = false;
             this.DGV_functions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewImageColumn1});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGV_functions.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGV_functions.DefaultCellStyle = dataGridViewCellStyle1;
             this.DGV_functions.GridColor = System.Drawing.Color.DarkSeaGreen;
             this.DGV_functions.Location = new System.Drawing.Point(12, 617);
             this.DGV_functions.Name = "DGV_functions";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGV_functions.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGV_functions.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DGV_functions.RowHeadersVisible = false;
             this.DGV_functions.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DGV_functions.Size = new System.Drawing.Size(73, 210);
@@ -249,14 +249,14 @@ namespace FastCodeSNILBot
             this.TSMI_humanoid_bot.Checked = true;
             this.TSMI_humanoid_bot.CheckState = System.Windows.Forms.CheckState.Checked;
             this.TSMI_humanoid_bot.Name = "TSMI_humanoid_bot";
-            this.TSMI_humanoid_bot.Size = new System.Drawing.Size(128, 22);
+            this.TSMI_humanoid_bot.Size = new System.Drawing.Size(180, 22);
             this.TSMI_humanoid_bot.Text = "Гуманоид";
             this.TSMI_humanoid_bot.Click += new System.EventHandler(this.TSMI_humanoid_bot_type_process);
             // 
             // TSMI_collector_bot
             // 
             this.TSMI_collector_bot.Name = "TSMI_collector_bot";
-            this.TSMI_collector_bot.Size = new System.Drawing.Size(128, 22);
+            this.TSMI_collector_bot.Size = new System.Drawing.Size(180, 22);
             this.TSMI_collector_bot.Text = "Сборщик";
             this.TSMI_collector_bot.Click += new System.EventHandler(this.TSMI_humanoid_bot_type_process);
             // 
