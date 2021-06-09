@@ -29,10 +29,12 @@ namespace FastCodeSNILBot
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.DGV_commands = new System.Windows.Forms.DataGridView();
+            this.CMS_color_selecting = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.BT_commands_count = new System.Windows.Forms.Button();
             this.DGV_commands_icons = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -61,6 +63,7 @@ namespace FastCodeSNILBot
             this.DGV_commands.BackgroundColor = System.Drawing.Color.DarkSeaGreen;
             this.DGV_commands.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_commands.ColumnHeadersVisible = false;
+            this.DGV_commands.ContextMenuStrip = this.CMS_color_selecting;
             this.DGV_commands.GridColor = System.Drawing.Color.DarkSeaGreen;
             this.DGV_commands.Location = new System.Drawing.Point(91, 27);
             this.DGV_commands.MinimumSize = new System.Drawing.Size(434, 12);
@@ -73,6 +76,11 @@ namespace FastCodeSNILBot
             this.DGV_commands.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_commands_CellMouseDown);
             this.DGV_commands.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DGV_commands_CellPainting);
             this.DGV_commands.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DGV_commands_RowsAdded);
+            // 
+            // CMS_color_selecting
+            // 
+            this.CMS_color_selecting.Name = "CMS_color_selecting";
+            this.CMS_color_selecting.Size = new System.Drawing.Size(181, 26);
             // 
             // BT_commands_count
             // 
@@ -249,14 +257,14 @@ namespace FastCodeSNILBot
             this.TSMI_humanoid_bot.Checked = true;
             this.TSMI_humanoid_bot.CheckState = System.Windows.Forms.CheckState.Checked;
             this.TSMI_humanoid_bot.Name = "TSMI_humanoid_bot";
-            this.TSMI_humanoid_bot.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_humanoid_bot.Size = new System.Drawing.Size(128, 22);
             this.TSMI_humanoid_bot.Text = "Гуманоид";
             this.TSMI_humanoid_bot.Click += new System.EventHandler(this.TSMI_humanoid_bot_type_process);
             // 
             // TSMI_collector_bot
             // 
             this.TSMI_collector_bot.Name = "TSMI_collector_bot";
-            this.TSMI_collector_bot.Size = new System.Drawing.Size(180, 22);
+            this.TSMI_collector_bot.Size = new System.Drawing.Size(128, 22);
             this.TSMI_collector_bot.Text = "Сборщик";
             this.TSMI_collector_bot.Click += new System.EventHandler(this.TSMI_humanoid_bot_type_process);
             // 
@@ -309,6 +317,7 @@ namespace FastCodeSNILBot
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem TSMI_humanoid_bot;
         private System.Windows.Forms.ToolStripMenuItem TSMI_collector_bot;
+        private System.Windows.Forms.ContextMenuStrip CMS_color_selecting;
     }
 }
 

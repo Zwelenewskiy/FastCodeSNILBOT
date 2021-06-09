@@ -54,7 +54,8 @@ namespace FastCodeSNILBot
         {
             public int row;
             public int collumn;
-            public Color color;
+            //public Color color;
+            public List<Color> colors = new List<Color>();
         }
 
         public class CommandCellTag
@@ -160,7 +161,6 @@ namespace FastCodeSNILBot
         };
 
         public static BotType current_bot_type = BotType.Humanoid;
-        //public static ImageList current_icons;
         public static int current_command_icon_index = 0;
 
         /// <summary>
@@ -211,5 +211,10 @@ namespace FastCodeSNILBot
         /// Текущая выбранная ячейка цвета для шаблонов
         /// </summary>
         public static int selected_color_cell_row = -1;
+
+        /// <summary>
+        /// Текущая выбранная ячейка в таблице команд (для удаления выбранной рамки)
+        /// </summary>
+        public static CellForRepaint current_cell;
     }
 }

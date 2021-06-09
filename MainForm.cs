@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace FastCodeSNILBot
@@ -57,16 +56,6 @@ namespace FastCodeSNILBot
             Model.selected_command_cell.X = 0;
 
             DGV_commands.Refresh();
-        }
-
-        public static void SetDoubleBuffered(Control control)
-        {
-            typeof(Control).InvokeMember("DoubleBuffered",
-                    BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
-                    null, 
-                    control, 
-                    new object[] { true }
-                );
         }
 
         public MainForm()
@@ -222,8 +211,8 @@ namespace FastCodeSNILBot
 
             Model.function_cells_for_repaint.Add(new Model.CellForRepaint()
             {
-                color = tmp
-            });
+                colors = new List<Color>() { tmp }
+            }) ;
 
             DGV_functions.Rows[DGV_functions.RowCount - 1].Cells[0].Tag = tmp;
 
@@ -247,9 +236,9 @@ namespace FastCodeSNILBot
                     {
                         if (cell != null)
                         {
-                            if (cell.color != Model.current_select_color)
+                            if (!cell.colors.Contains(Model.current_select_color))
                             {
-                                cell.color = Model.current_select_color;
+                                cell.colors.Add(Model.current_select_color);
 
                                 int cell_index = Model.command_cells_for_repaint.FindIndex(c => c.collumn == e.ColumnIndex && c.row == e.RowIndex);
                                 Model.command_cells_for_repaint[cell_index] = cell;
@@ -261,7 +250,7 @@ namespace FastCodeSNILBot
                             {
                                 row = DGV_commands.CurrentCell.RowIndex,
                                 collumn = DGV_commands.CurrentCell.ColumnIndex,
-                                color = Model.current_select_color
+                                colors = new List<Color>() { Model.current_select_color }
                             });
                         }
 
@@ -272,8 +261,24 @@ namespace FastCodeSNILBot
                     break;
 
                 case Model.OperationMode.SelectingRemove:
+                    CMS_color_selecting.Items.Clear();
+
                     if (cell != null)
-                        Model.command_cells_for_repaint.Remove(cell);
+                    {
+                        foreach (Color color in cell.colors)
+                        {
+                            CMS_color_selecting.Items.Add("");
+                            CMS_color_selecting.Items[CMS_color_selecting.Items.Count - 1].BackColor = color;
+
+                            CMS_color_selecting.Items[CMS_color_selecting.Items.Count - 1].Click -= CMS_color_selecting_item_process;
+                            CMS_color_selecting.Items[CMS_color_selecting.Items.Count - 1].Click += CMS_color_selecting_item_process;
+                        }
+
+                        CMS_color_selecting.Show(Cursor.Position);
+
+                        Model.current_cell = cell;
+                        //Model.command_cells_for_repaint.Remove(cell);
+                    }
 
                     Model.current_command_col = e.ColumnIndex;
                     Model.current_command_row = e.RowIndex;
@@ -341,7 +346,7 @@ namespace FastCodeSNILBot
             e.PaintBackground(e.ClipBounds, true);
             e.PaintContent(e.ClipBounds);
 
-            using (Brush text_brush = new SolidBrush(cell.color),
+            using (Brush text_brush = new SolidBrush(cell.colors[0]),
                 background_brush = new SolidBrush(Color.FromArgb(166, 155, 17)),
                 border_brush = new SolidBrush(Color.White))
             {
@@ -397,19 +402,24 @@ namespace FastCodeSNILBot
                     e.Graphics.DrawImage(Properties.Resources.BackGround_1, e.CellBounds);
                 }
             }
-            
+
             if (cell != null)
             {
-                using (Brush border_brush = new SolidBrush(cell.color))
+                for (int i = 0; i < cell.colors.Count; i++)
                 {
-                    using (Pen border_pen = new Pen(border_brush, 3))
+                    int border_param = Model.CELL_BORDER_WIDTH * i;
+
+                    using (Brush border_brush = new SolidBrush(cell.colors[i]))
                     {
-                        e.Graphics.DrawRectangle(border_pen, new Rectangle(
-                            e.CellBounds.X + 2,
-                            e.CellBounds.Y + 2,
-                            e.CellBounds.Width - 6,
-                            e.CellBounds.Height - 6
-                        )); 
+                        using (Pen border_pen = new Pen(border_brush, Model.CELL_BORDER_WIDTH))
+                        {
+                            e.Graphics.DrawRectangle(border_pen, new Rectangle(
+                                e.CellBounds.X + 4 + border_param,
+                                e.CellBounds.Y + 4 + border_param,
+                                e.CellBounds.Width - 2 * Model.CELL_BORDER_WIDTH - 2 * border_param,
+                                e.CellBounds.Height - 2 * Model.CELL_BORDER_WIDTH - 2 * border_param
+                            ));
+                        }
                     }
                 }
             }
@@ -518,6 +528,16 @@ namespace FastCodeSNILBot
 
             Model.current_command_col = e.ColumnIndex;
             Model.current_command_row = e.RowIndex;
+        }
+
+        private void CMS_color_selecting_item_process(object sender, EventArgs e)
+        {
+            Color color = (sender as ToolStripMenuItem).BackColor;
+
+            int index = Model.current_cell.colors.FindIndex(c => c == color);
+            Model.current_cell.colors.RemoveAt(index);
+
+            DGV_commands.Refresh();
         }
     }
 }
